@@ -1,0 +1,51 @@
+---
+---
+
+<section class="py-8 bg-charcoal overflow-hidden" aria-label="Scrolling highlights">
+  <div class="marquee-wrapper">
+    <div class="marquee-track flex items-center gap-12 whitespace-nowrap">
+      {[1, 2].map(() => (
+        <>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="font-accent italic text-2xl md:text-3xl text-cream/80">Sourdough Bread</span>
+          </span>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/50"></span>
+            <span class="font-accent text-2xl md:text-3xl text-cream/40">Specialty Coffee</span>
+          </span>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="font-accent italic text-2xl md:text-3xl text-cream/80">Wood-Fired Pizza</span>
+          </span>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/50"></span>
+            <span class="font-accent text-2xl md:text-3xl text-cream/40">Farm to Table</span>
+          </span>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="font-accent italic text-2xl md:text-3xl text-cream/80">Artisan Desserts</span>
+          </span>
+          <span class="flex items-center gap-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/50"></span>
+            <span class="font-accent text-2xl md:text-3xl text-cream/40">Wild Vibes</span>
+          </span>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+</style>

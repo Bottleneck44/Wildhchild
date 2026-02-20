@@ -1,0 +1,67 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gold text-charcoal relative" role="contentinfo">
+  <div class="section-container py-16 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+      
+      <!-- Brand — Large script like inspiration -->
+      <div class="lg:col-span-5">
+        <span class="font-accent italic text-display-xl font-light text-charcoal leading-none block">
+          Wild Child<br/>Cafe
+        </span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="lg:col-span-3" aria-label="Footer navigation">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-charcoal/50 block mb-5">Navigation</span>
+        <ul class="space-y-3" role="list">
+          <li><a href="#home" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">Home</a></li>
+          <li><a href="#about" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">About</a></li>
+          <li><a href="#menu" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">Menu</a></li>
+          <li><a href="#gallery" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">Gallery</a></li>
+          <li><a href="#faq" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">FAQ</a></li>
+          <li><a href="#visit" class="text-sm text-charcoal/70 hover:text-charcoal transition-colors">Visit</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div class="lg:col-span-4">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-charcoal/50 block mb-5">Contact</span>
+        <address class="not-italic space-y-3 text-sm text-charcoal/70">
+          <p>Perumbakkam Road,<br/>Samudram, Tamil Nadu 606603</p>
+          <p>
+            <a href="tel:+919321455199" class="hover:text-charcoal transition-colors">+91 93214 55199</a>
+          </p>
+          <p>
+            <a href="mailto:hello@wildchildcafe.in" class="hover:text-charcoal transition-colors">hello@wildchildcafe.in</a>
+          </p>
+        </address>
+
+        <!-- Social -->
+        <div class="flex gap-4 mt-6">
+          <a href="https://instagram.com/wildchildcafe" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-charcoal/40 hover:text-charcoal transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://wa.me/919321455199" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-charcoal/40 hover:text-charcoal transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
+          <a href="https://www.google.com/maps/place/Wild+child" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" class="text-charcoal/40 hover:text-charcoal transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-charcoal/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-charcoal/35 text-xs">
+        &copy; {currentYear} Wild Child Cafe. All rights reserved.
+      </p>
+      <div class="flex items-center gap-4 text-charcoal/30 text-xs">
+        <a href="/privacy" class="hover:text-charcoal transition-colors">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>

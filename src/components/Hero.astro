@@ -1,0 +1,81 @@
+---
+const now = new Date();
+const hour = now.getHours();
+const day = now.getDay();
+const isWeekday = day >= 1 && day <= 5;
+const isSaturday = day === 6;
+const isSunday = day === 0;
+let isOpen = false;
+if (isWeekday && hour >= 8 && hour < 20) isOpen = true;
+if (isSaturday && hour >= 8 && hour < 21) isOpen = true;
+if (isSunday && hour >= 9 && hour < 20) isOpen = true;
+---
+
+<section id="home" class="hero relative min-h-screen flex items-end overflow-hidden" aria-label="Wild Child Cafe — Artisan Bakery in Samudram">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/hero-bg.png" 
+      alt="" 
+      class="w-full h-full object-cover"
+      width="1920"
+      height="1080"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      role="presentation"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-charcoal/10"></div>
+  </div>
+
+
+
+  <!-- Hero Content — Large flowing italic headline -->
+  <div class="relative z-10 w-full pb-10 sm:pb-14 lg:pb-16 px-6 sm:px-10 lg:px-14">
+    <!-- Large headline spanning the width -->
+    <h1 class="hero-headline font-accent italic text-cream font-light leading-[0.95] mb-5" style="animation: slide-up 0.8s var(--ease-out-expo) 0.2s forwards; opacity: 0;">
+      <span class="block text-display-hero">Artisan Sourdough</span>
+      <span class="block text-display-hero">&amp; Specialty Coffee</span>
+    </h1>
+
+    <!-- Description right under headline -->
+    <p class="text-cream/60 text-sm sm:text-base leading-relaxed mb-7 max-w-lg font-light" style="animation: fade-in 0.8s ease 0.5s forwards; opacity: 0;">
+      48-hour wild-fermented bread, single-origin brews, and farm-fresh meals — handcrafted daily in Samudram.
+    </p>
+
+    <!-- CTA row — prominent -->
+    <div class="flex items-center gap-5 mb-14 sm:mb-16" style="animation: fade-in 0.8s ease 0.7s forwards; opacity: 0;">
+      <a href="#menu" class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] px-7 py-3.5 transition-all duration-400" style="color: #141414; background: #C9AF7C; border: 1px solid #C9AF7C;" onmouseenter="this.style.background='#D4BF94'; this.style.borderColor='#D4BF94';" onmouseleave="this.style.background='#C9AF7C'; this.style.borderColor='#C9AF7C';" id="hero-cta-menu">
+        Explore Menu
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+      <a href="tel:+919321455199" class="text-[11px] uppercase tracking-[0.15em] transition-colors" style="color: rgba(201,175,124,0.6);" onmouseenter="this.style.color='#C9AF7C';" onmouseleave="this.style.color='rgba(201,175,124,0.6)';" id="hero-cta-call">
+        +91 93214 55199
+      </a>
+    </div>
+
+    <!-- Bottom bar — open status + scroll -->
+    <div class="flex items-center justify-between" style="animation: fade-in 0.8s ease 0.9s forwards; opacity: 0;">
+      <div class="flex items-center gap-3">
+        {isOpen && (
+          <span class="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em]" style="color: rgba(201,175,124,0.5);">
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: #C9AF7C;"></span>
+            Open Now
+          </span>
+        )}
+      </div>
+      <span class="hidden sm:flex items-center gap-2 text-[10px] uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.25);" aria-hidden="true">
+        Scroll to explore
+        <span class="w-5 h-5 rounded-full flex justify-center items-center" style="border: 1px solid rgba(255,255,255,0.2);">
+          <span class="w-0.5 h-1.5 rounded-full animate-bounce" style="background: rgba(255,255,255,0.3);"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-headline {
+    text-shadow: 0 2px 60px rgba(0, 0, 0, 0.3);
+  }
+</style>

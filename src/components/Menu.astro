@@ -1,0 +1,212 @@
+---
+const menuCategories = [
+  {
+    id: 'breakfast',
+    label: 'Breakfast',
+    items: [
+      { name: 'Classic Sourdough Toast', description: 'Butter, house-made jam & seasonal fruit', price: '₹180', tag: '' },
+      { name: 'Avocado Smash', description: 'On sourdough with microgreens, cherry tomatoes & seeds', price: '₹280', tag: 'Popular' },
+      { name: 'Eggs Benedict', description: 'Poached eggs, hollandaise on toasted sourdough', price: '₹320', tag: '' },
+      { name: 'Mushroom Toast', description: 'Sautéed wild mushrooms on garlic sourdough with herbs', price: '₹260', tag: '' },
+      { name: 'Granola Bowl', description: 'House granola, seasonal fruits, yogurt & honey', price: '₹220', tag: '' },
+    ]
+  },
+  {
+    id: 'coffee',
+    label: 'Coffee & Drinks',
+    items: [
+      { name: 'Flat White', description: 'Double ristretto with velvety steamed milk', price: '₹180', tag: '' },
+      { name: 'Wild Latte', description: 'Signature house blend with oat milk option', price: '₹200', tag: 'Signature' },
+      { name: 'Rose Latte', description: 'Our famous pink beauty — rose, milk & espresso', price: '₹220', tag: 'Best Seller' },
+      { name: 'Cold Brew', description: '18-hour slow-steeped cold brew, smooth & bold', price: '₹200', tag: '' },
+      { name: 'Fresh Juices', description: 'Seasonal cold-pressed juices made to order', price: '₹160', tag: '' },
+    ]
+  },
+  {
+    id: 'mains',
+    label: 'Mains',
+    items: [
+      { name: 'Wild Harvest Bowl', description: 'Grains, roasted vegetables, hummus & tahini', price: '₹320', tag: 'Popular' },
+      { name: 'Sourdough Pizza', description: 'Wood-fired with seasonal toppings', price: '₹380', tag: '' },
+      { name: 'Mediterranean Platter', description: 'Hummus, falafel, fresh vegetables & warm pita', price: '₹350', tag: '' },
+      { name: 'Pumpkin Soup', description: 'Roasted pumpkin, coconut cream & sourdough on side', price: '₹220', tag: '' },
+      { name: 'Grilled Sandwich', description: 'On sourdough with cheese, herbs & house-made chutney', price: '₹260', tag: '' },
+    ]
+  },
+  {
+    id: 'bakery',
+    label: 'Bakery',
+    items: [
+      { name: 'Sourdough Loaf', description: 'Wild-fermented 48-hour artisan sourdough', price: '₹280', tag: 'Signature' },
+      { name: 'Chocolate Tart', description: 'Rich dark chocolate ganache in biscuit crust', price: '₹200', tag: '' },
+      { name: 'Cinnamon Roll', description: 'Warm with cream cheese frosting & pecans', price: '₹180', tag: 'Popular' },
+      { name: 'Banana Bread', description: 'Moist, spiced, with walnuts & honey drizzle', price: '₹160', tag: '' },
+      { name: 'Croissant', description: 'Butter-laminated, flaky, freshly baked every morning', price: '₹150', tag: '' },
+    ]
+  }
+];
+---
+
+<section id="menu" class="section-padding bg-warm-white relative" aria-labelledby="menu-heading">
+  <div class="section-container">
+    <!-- Section heading — Drop cap style like inspiration -->
+    <div class="mb-12 lg:mb-16 reveal">
+      <h2 id="menu-heading" class="font-accent italic text-display-xl font-light text-charcoal leading-none">
+        <span class="not-italic font-medium">M</span>enu
+      </h2>
+    </div>
+
+    <!-- Category nav — Slash separated like inspiration -->
+    <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-12 reveal" id="menu-tabs" role="tablist" aria-label="Menu categories">
+      {menuCategories.map((cat, i) => (
+        <>
+          {i > 0 && <span class="text-charcoal/20 text-sm select-none">/</span>}
+          <button
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${cat.id}`}
+            id={`tab-${cat.id}`}
+            tabindex={i === 0 ? '0' : '-1'}
+            class={`menu-tab text-sm sm:text-base cursor-pointer transition-all duration-300 pb-0.5 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 ${
+              i === 0 
+                ? 'text-charcoal border-b border-charcoal font-medium' 
+                : 'text-charcoal/40 hover:text-charcoal/70 border-b border-transparent'
+            }`}
+            data-category={cat.id}
+          >
+            {cat.label}
+          </button>
+        </>
+      ))}
+    </div>
+
+    <!-- Menu Panels — Two column: image + items -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+      <!-- Left: Feature image -->
+      <div class="lg:col-span-4 reveal-left">
+        <div class="overflow-hidden sticky top-28">
+          <img 
+            src="/images/food-bread-1.jpg" 
+            alt="Wild Child Cafe artisan sourdough" 
+            class="w-full aspect-[3/4] object-cover"
+            loading="lazy"
+            id="menu-feature-image"
+          />
+        </div>
+      </div>
+
+      <!-- Right: Menu items -->
+      <div class="lg:col-span-8">
+        {menuCategories.map((cat, catIndex) => (
+          <div 
+            id={`panel-${cat.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${cat.id}`}
+            class={`menu-panel ${catIndex === 0 ? 'block' : 'hidden'}`}
+            tabindex="0"
+            data-category={cat.id}
+          >
+            <div class="divide-y divide-charcoal/8">
+              {cat.items.map((item, itemIndex) => (
+                <div class={`menu-item group py-5 sm:py-6 ${catIndex === 0 ? 'reveal delay-' + Math.min(itemIndex + 1, 5) : ''}`}>
+                  <div class="flex items-baseline justify-between gap-4">
+                    <div class="flex items-baseline gap-3 flex-wrap">
+                      <h3 class="font-accent text-lg sm:text-xl text-charcoal group-hover:text-gold transition-colors duration-300">
+                        {item.name}
+                      </h3>
+                      {item.tag && (
+                        <span class="text-gold text-[9px] font-medium uppercase tracking-[0.15em]">
+                          {item.tag}
+                        </span>
+                      )}
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                      <span class="hidden sm:block flex-1 border-b border-dotted border-charcoal/15 min-w-[40px]"></span>
+                      <span class="font-accent text-lg sm:text-xl text-charcoal tabular-nums">
+                        {item.price}
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-charcoal/40 text-xs sm:text-sm mt-1 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <!-- CTA -->
+        <div class="mt-10 pt-6 border-t border-charcoal/8 reveal">
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="https://wa.me/919321455199?text=Hi!%20Can%20I%20see%20the%20full%20menu?" target="_blank" rel="noopener noreferrer" class="text-[10px] uppercase tracking-[0.15em] text-charcoal/50 hover:text-gold transition-colors" id="menu-cta-full">
+              → See all menu
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  const tablist = document.getElementById('menu-tabs');
+
+  function switchTab(newTab) {
+    const category = newTab.getAttribute('data-category');
+    
+    tabs.forEach(t => {
+      t.classList.remove('text-charcoal', 'border-charcoal', 'font-medium');
+      t.classList.add('text-charcoal/40', 'border-transparent');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    newTab.classList.add('text-charcoal', 'border-charcoal', 'font-medium');
+    newTab.classList.remove('text-charcoal/40', 'border-transparent');
+    newTab.setAttribute('aria-selected', 'true');
+    newTab.setAttribute('tabindex', '0');
+    newTab.focus();
+    
+    panels.forEach(panel => {
+      if (panel.getAttribute('data-category') === category) {
+        panel.classList.remove('hidden');
+        panel.classList.add('block');
+        panel.querySelectorAll('.menu-item').forEach((item, i) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, i * 60);
+        });
+      } else {
+        panel.classList.add('hidden');
+        panel.classList.remove('block');
+      }
+    });
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => switchTab(tab)));
+
+  tablist?.addEventListener('keydown', (e) => {
+    const tabArray = Array.from(tabs);
+    const currentIndex = tabArray.indexOf(document.activeElement);
+    let newIndex;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      newIndex = (currentIndex + 1) % tabArray.length;
+      switchTab(tabArray[newIndex]);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      newIndex = (currentIndex - 1 + tabArray.length) % tabArray.length;
+      switchTab(tabArray[newIndex]);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      switchTab(tabArray[0]);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      switchTab(tabArray[tabArray.length - 1]);
+    }
+  });
+</script>

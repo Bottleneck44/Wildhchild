@@ -1,0 +1,49 @@
+---
+const images = [
+  { src: '/images/food-coffee-rose.jpg', alt: 'Signature rose latte at Wild Child Cafe' },
+  { src: '/images/food-bread-round.jpg', alt: 'Artisan sourdough bread fresh from the oven' },
+  { src: '/images/food-platter.jpg', alt: 'Mediterranean sharing platter' },
+];
+---
+
+<section id="gallery" class="section-padding bg-cream relative" aria-labelledby="gallery-heading">
+  <div class="section-container">
+    <!-- Header row -->
+    <div class="flex items-end justify-between mb-12 lg:mb-16 reveal">
+      <h2 id="gallery-heading" class="font-accent italic text-display-xl font-light text-charcoal leading-none">
+        <span class="not-italic font-medium">G</span>allery
+      </h2>
+      <a 
+        href="https://instagram.com/wildchildcafe" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-charcoal/40 hover:text-gold transition-colors"
+        id="gallery-cta-instagram"
+      >
+        Follow on Instagram
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+    </div>
+
+    <!-- Vertical 3-image grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+      {images.map((img, i) => (
+        <div class={`reveal delay-${i + 1} overflow-hidden group`}>
+          <div class="relative overflow-hidden">
+            <img 
+              src={img.src} 
+              alt={img.alt}
+              class="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/15 transition-all duration-500"></div>
+            <!-- Caption on hover -->
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+              <span class="text-cream text-xs font-medium tracking-wide">{img.alt}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
