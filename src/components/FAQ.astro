@@ -1,0 +1,118 @@
+---
+const faqs = [
+  {
+    question: 'What is Wild Child Cafe known for?',
+    answer: 'Wild Child Cafe is known for its 48-hour wild-fermented sourdough bread, specialty single-origin coffees, and farm-to-table meals. Our signature items include the Rose Latte, Sourdough Pizza, and Artisan Bread Loaf.'
+  },
+  {
+    question: 'Where is Wild Child Cafe located?',
+    answer: 'We are located on Perumbakkam Road, Samudram, Tamil Nadu 606603, India. Free parking available.'
+  },
+  {
+    question: 'What are your opening hours?',
+    answer: 'Monday to Friday: 8AM – 8PM. Saturday: 8AM – 9PM. Sunday: 9AM – 8PM. Fresh bread comes out every morning.'
+  },
+  {
+    question: 'Do you accept reservations?',
+    answer: 'Yes. Call us at +91 93214 55199 or message on WhatsApp. Walk-ins welcome, reservations recommended on weekends.'
+  },
+  {
+    question: 'Is it pet-friendly and family-friendly?',
+    answer: 'Absolutely. We welcome pets in our outdoor seating area and have a child-friendly environment with high chairs available. Free Wi-Fi for all guests.'
+  },
+  {
+    question: 'Do you offer vegetarian or vegan options?',
+    answer: 'Yes. Many items are vegetarian, and we accommodate vegan requests — including oat milk lattes, grain bowls, and sourdough bread.'
+  },
+  {
+    question: 'Can I order bread for takeaway?',
+    answer: 'Yes. Sourdough loaves and all baked goods are available for takeaway. Call ahead as artisan bread sells out quickly on weekends.'
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'Cash, credit/debit cards, and UPI (Google Pay, PhonePe, Paytm).'
+  }
+];
+---
+
+<section id="faq" class="section-padding bg-warm-white relative" aria-labelledby="faq-heading">
+  <div class="section-container">
+    <div class="max-w-3xl mx-auto">
+      <!-- Section heading -->
+      <div class="mb-12 lg:mb-16 reveal">
+        <span class="text-gold text-[10px] uppercase tracking-[0.3em] font-medium mb-4 block">Common Questions</span>
+        <h2 id="faq-heading" class="font-accent italic text-display-lg font-light text-charcoal leading-none">
+          Frequently asked
+        </h2>
+      </div>
+
+      <!-- FAQ List -->
+      <div class="divide-y divide-charcoal/8">
+        {faqs.map((faq, i) => (
+          <div class={`faq-item reveal delay-${Math.min(i + 1, 5)}`}>
+            <button
+              class="faq-toggle w-full text-left py-6 sm:py-7 flex items-start justify-between gap-6 cursor-pointer group"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-question-${i}`}
+            >
+              <span class="font-accent text-lg sm:text-xl text-charcoal group-hover:text-gold transition-colors duration-300">
+                {faq.question}
+              </span>
+              <span class="faq-icon w-5 h-5 shrink-0 mt-1 text-charcoal/30 transition-transform duration-300 flex items-center justify-center" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div 
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-question-${i}`}
+              class="faq-answer overflow-hidden max-h-0 transition-all duration-400"
+            >
+              <div class="pb-6 sm:pb-7 pr-12">
+                <p class="text-charcoal/50 text-sm leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 reveal">
+        <a href="https://wa.me/919321455199?text=Hi!%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="text-[10px] uppercase tracking-[0.15em] text-charcoal/40 hover:text-gold transition-colors">
+          → Still have questions? Ask us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      const answer = toggle.nextElementSibling;
+      const icon = toggle.querySelector('.faq-icon');
+      
+      document.querySelectorAll('.faq-toggle').forEach(other => {
+        if (other !== toggle) {
+          other.setAttribute('aria-expanded', 'false');
+          other.nextElementSibling.style.maxHeight = '0';
+          other.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      if (expanded) {
+        toggle.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        toggle.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

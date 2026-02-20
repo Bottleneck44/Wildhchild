@@ -1,0 +1,20 @@
+{
+  "name": "wildchild-cafe",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Wild Child Cafe - Artisan cafe in Samudram, Tamil Nadu",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.5.0",
+    "@astrojs/sitemap": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

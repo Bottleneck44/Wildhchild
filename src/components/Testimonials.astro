@@ -1,0 +1,76 @@
+---
+const testimonials = [
+  {
+    name: 'Priya S.',
+    text: 'The sourdough here is absolutely divine. Best bread I\'ve had in Tamil Nadu. The rose latte is gorgeous — both to look at and to sip.',
+    date: '2 weeks ago',
+  },
+  {
+    name: 'Arjun M.',
+    text: 'Such a beautiful, calming space. Great food, even better coffee. The pizza is seriously underrated. Will keep coming back.',
+    date: '1 month ago',
+  },
+  {
+    name: 'Deepa K.',
+    text: 'Perfect spot for a family brunch. Kids loved it, we loved it. The cinnamon rolls are addictive and the staff is incredibly warm.',
+    date: '3 weeks ago',
+  },
+  {
+    name: 'Ravi T.',
+    text: 'Wild Child is a hidden gem. The quality of ingredients, the care in preparation — you can taste the difference. Cold Brew is outstanding.',
+    date: '1 month ago',
+  }
+];
+---
+
+<section id="testimonials" class="section-padding bg-charcoal text-cream relative overflow-hidden" aria-labelledby="testimonials-heading">
+  <div class="section-container">
+    <!-- Section heading -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16 reveal">
+      <div>
+        <span class="text-gold/60 text-[10px] uppercase tracking-[0.3em] block mb-4">Verified Reviews</span>
+        <h2 id="testimonials-heading" class="font-accent italic text-display-lg font-light text-cream leading-none">
+          What our guests say
+        </h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex" aria-label="4.8 out of 5 stars">
+          {[1,2,3,4,5].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-gold"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          ))}
+        </div>
+        <span class="text-cream/40 text-xs ml-1">4.8 from 98+ reviews</span>
+      </div>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-cream/8">
+      {testimonials.map((t, i) => (
+        <div class={`reveal delay-${Math.min(i + 1, 4)} bg-charcoal p-8 sm:p-10`}>
+          <blockquote>
+            <p class="font-accent italic text-lg sm:text-xl text-cream/80 leading-relaxed mb-6">
+              "{t.text}"
+            </p>
+          </blockquote>
+          <div class="flex items-center justify-between">
+            <cite class="not-italic text-xs uppercase tracking-[0.15em] text-cream/50">{t.name}</cite>
+            <span class="text-cream/25 text-[10px]">{t.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Google CTA -->
+    <div class="mt-10 text-center reveal">
+      <a 
+        href="https://www.google.com/maps/place/Wild+child" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-[10px] uppercase tracking-[0.15em] text-cream/30 hover:text-gold transition-colors"
+        id="testimonials-cta-google"
+      >
+        Read all reviews on Google →
+      </a>
+    </div>
+  </div>
+</section>

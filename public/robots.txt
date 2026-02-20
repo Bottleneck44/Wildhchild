@@ -1,0 +1,5 @@
+# Wild Child Cafe
+User-agent: *
+Allow: /
+
+Sitemap: https://wildchildcafe.in/sitemap-index.xml
